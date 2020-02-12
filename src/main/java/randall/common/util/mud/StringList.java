@@ -1,11 +1,11 @@
 package randall.common.util.mud;
 
 import com.google.common.collect.Lists;
+import helper.InputOuts;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import randall.common.util.IOHelper;
 
 /**
  * TStringList for Delphi 2007
@@ -30,11 +30,11 @@ class StringList<T> extends ArrayList<String> {
   }
 
   public void loadFromFile(String filename) {
-    addAll(IOHelper.lines(Paths.get(filename)));
+    addAll(InputOuts.lines(Paths.get(filename)));
   }
 
   public void saveToFile(String filename) {
-    IOHelper.write(Paths.get(filename),
+    InputOuts.write(Paths.get(filename),
         stream().map(s -> s + System.lineSeparator()).collect(Collectors.joining()));
   }
 }

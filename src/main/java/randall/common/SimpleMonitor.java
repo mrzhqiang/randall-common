@@ -3,16 +3,15 @@ package randall.common;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 简单的监视器。
  *
  * @author mrzhqiang
  */
+@Slf4j
 final class SimpleMonitor implements Monitor {
-  private static final Logger LOGGER = LoggerFactory.getLogger("randall");
 
   private final long startTime = System.currentTimeMillis();
   private final List<Period> periods = Lists.newArrayList();
@@ -29,7 +28,7 @@ final class SimpleMonitor implements Monitor {
   public void report(String name) {
     long entTime = System.currentTimeMillis();
     long totalTime = entTime - startTime;
-    LOGGER.info("The [{}] total time: {}(ms)", name, totalTime);
+    log.info("The [{}] total time: {}(ms)", name, totalTime);
 
     for (int i = 0; i < periods.size(); i++) {
       Period book = periods.get(i);
@@ -41,7 +40,7 @@ final class SimpleMonitor implements Monitor {
       } else {
         intervalTime = periods.get(i + 1).timestamp - book.timestamp;
       }
-      LOGGER.info("The [{}] >>> [{}] time: {}(ms)", name, book.name, intervalTime);
+      log.info("The [{}] >>> [{}] time: {}(ms)", name, book.name, intervalTime);
     }
     periods.clear();
   }

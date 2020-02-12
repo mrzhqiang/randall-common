@@ -1,6 +1,6 @@
 package randall.common;
 
-import randall.common.util.Environments;
+import helper.Environments;
 
 /**
  * 监视器。
@@ -14,7 +14,7 @@ public interface Monitor {
    * 注意，这个方法每次调用都返回一个新的实例，并且需要在 IDEA 中以调试模式运行，才会真正去打印时间戳。
    */
   static Monitor getInstance() {
-    if (Environments.isDebug()) {
+    if (Environments.debug()) {
       return new SimpleMonitor();
     }
     return EMPTY;
