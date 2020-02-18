@@ -1,5 +1,8 @@
 package randall.common;
 
+/**
+ * 信号常量类。
+ */
 public enum Signal {
   ;
 

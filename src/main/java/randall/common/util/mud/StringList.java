@@ -1,7 +1,7 @@
 package randall.common.util.mud;
 
 import com.google.common.collect.Lists;
-import helper.InputOuts;
+import helper.Explorer;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +30,11 @@ class StringList<T> extends ArrayList<String> {
   }
 
   public void loadFromFile(String filename) {
-    addAll(InputOuts.lines(Paths.get(filename)));
+    addAll(Explorer.lines(Paths.get(filename)));
   }
 
   public void saveToFile(String filename) {
-    InputOuts.write(Paths.get(filename),
+    Explorer.write(Paths.get(filename),
         stream().map(s -> s + System.lineSeparator()).collect(Collectors.joining()));
   }
 }
